@@ -9,7 +9,7 @@
     "encoder": {
         "enabled": true,
         "rotary": [
-            { "pin_a": "F5", "pin_b": "F4" }
+            { "pin_a": "F4", "pin_b":  "F5"}
         ]
     },
     "features": {
@@ -35,7 +35,7 @@
             "band_spiral_sat": false,
             "band_spiral_val": false,
             "cycle_all": false,
-            "cycle_left_right": false,
+            "cycle_left_right": true,
             "cycle_up_down": false,
             "cycle_out_in": false,
             "cycle_out_in_dual": false,
@@ -52,8 +52,10 @@
             "hue_wave": false,
             "pixel_fractal": false,
             "pixel_flow": false,
-            "pixel_rain": false
+            "pixel_rain": false,
+            "solid_color": true
         },
+
         "layout": [
             { "flags": 4, "matrix": [0, 5], "x": 95, "y":  7 },
             { "flags": 4, "matrix": [1, 5], "x": 95, "y": 21 },
@@ -122,7 +124,7 @@
         "encoder": {
             "right": {
                 "rotary": [
-                    { "pin_a": "F4", "pin_b": "F5" }
+                    { "pin_a": "F5", "pin_b": "F4" }
                 ]
             }
         }

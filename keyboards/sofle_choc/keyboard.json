@@ -54,6 +54,7 @@
             "pixel_flow": true,
             "pixel_rain": true
         },
+        
         "layout": [
             { "flags": 4, "matrix": [0, 5], "x": 95, "y":  7 },
             { "flags": 4, "matrix": [1, 5], "x": 95, "y": 21 },
