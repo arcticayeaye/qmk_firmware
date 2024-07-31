@@ -29,7 +29,8 @@
 #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 100  // limits maximum brightness of LEDs (max 255). Higher may cause the controller to crash.
 
 #define SPLIT_LAYER_STATE_ENABLE //for synching RGB layer indicators to both halves
-//#define SPLIT_LED_STATE_ENABLE //for synching RGB layer indicators to both halves
+
 
 #undef RGB_MATRIX_DEFAULT_MODE
 #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR
+#define RGB_TRIGGER_ON_KEYDOWN
