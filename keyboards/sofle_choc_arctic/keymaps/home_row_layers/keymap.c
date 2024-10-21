@@ -14,6 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
+#include "keymap_german_mac_iso.h"
 
 
 /*
@@ -32,60 +33,54 @@
  *            `----------------------------------'           '------''---------------------------'
  */
 
-enum custom_keycodes {
-    MA_UE = SAFE_RANGE,
-    MA_OE,
-    MA_AE,
-};
-
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[0] = LAYOUT(
-        KC_ESC , KC_1 , KC_2       , KC_3      , KC_4         , KC_5 ,                        KC_6   , KC_7        , KC_8       , KC_9       , KC_0    , KC_BSLS,
-        KC_GRV , KC_Q , KC_W       , KC_E      , KC_R         , KC_T ,                        KC_Y   , KC_U        , KC_I       , KC_O       , KC_P    , KC_SLSH,
-        KC_TAB , KC_A , LT(2,KC_S) , LT(1,KC_D), LSFT_T(KC_F) , KC_G ,                        KC_H   , RSFT_T(KC_J), LT(3,KC_K) , LT(4,KC_L) , KC_SCLN , KC_RSFT,
-        KC_CAPS, KC_Z , KC_X       , KC_C      , KC_V         , KC_B ,   KC_MUTE,    KC_MPLY, KC_N   , KC_M        , KC_COMM    , KC_DOT     , KC_QUOT , KC_RCTL,
-        XXXXXXX , MO(5)  , LCTL_T(KC_BSPC) ,LALT_T(KC_ENT) , KC_LGUI ,                    RGUI_T(KC_BSPC), RALT_T(KC_SPC), RCTL_T(KC_DEL) , MO(5)  , XXXXXXX
+        XXXXXXX , DE_1 , DE_2       , DE_3      , DE_4         , DE_5 ,                        DE_6   , DE_7        , DE_8       , DE_9       , DE_0    , XXXXXXX,
+        KC_ESC  , DE_Q , DE_W       , DE_E      , DE_R         , DE_T ,                        DE_Y   , DE_U        , DE_I       , DE_O       , DE_P    , XXXXXXX,
+        KC_LSFT , DE_A , LT(2,DE_S) , LT(1,DE_D), LSFT_T(DE_F) , DE_G ,                        DE_H , LSFT_T(DE_J), LT(3,DE_K) , LT(4,DE_L)     , DE_SCLN , KC_RSFT,
+        KC_CAPS , DE_Z , DE_X       , DE_C      , LT(5,DE_V)         , DE_B ,   KC_MUTE,    KC_MPLY, LT(5,DE_N)   , DE_M        , DE_COMM    , DE_DOT     , DE_QUOT , XXXXXXX,
+        XXXXXXX , XXXXXXX  , LCTL_T(KC_BSPC) ,LALT_T(KC_ENT) , LGUI_T(KC_TAB) ,                    KC_RGUI, RALT_T(KC_SPC), RCTL_T(KC_DEL) , XXXXXXX , XXXXXXX
     ),
 
 	[1] = LAYOUT(
         _______, _______, _______, _______, _______, _______,                      _______, _______       , _______ , _______        , _______, _______,
-        _______, _______, _______, _______, _______, _______,                      KC_ESC , LALT(KC_LEFT) , KC_UP   , LALT(KC_RIGHT) , KC_PSCR, _______,
+        _______, _______, _______, _______, _______, _______,                      _______ , LALT(KC_LEFT) , KC_UP   , LALT(KC_RIGHT) , KC_PSCR, _______,
         _______, _______, _______, _______, _______, _______,                      KC_HOME, KC_LEFT       , KC_DOWN , KC_RIGHT       , KC_END , _______,
-        _______, _______, _______, _______, _______, _______, _______,    _______, _______, LCTL(KC_LEFT) , KC_UP   , LCTL(KC_RIGHT) , _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,    _______, _______, LCTL(KC_LEFT) , _______ , LCTL(KC_RIGHT) , _______, _______,
              _______, _______, _______, _______, _______,                             _______ , _______, _______, _______, _______
     ),
 
 	[2] = LAYOUT(
         _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______ , _______,
-        _______, _______, _______, _______, _______, _______,                       KC_MINS, KC_7   , KC_8   , KC_9   , KC_SLSH , _______,
-        _______, _______, _______, _______, _______, _______,                       KC_PLUS, KC_4   , KC_5   , KC_6   , KC_ASTR , _______,
-        _______, _______, _______, _______, _______, _______, _______,     _______, KC_0   , KC_1   , KC_2   , KC_3   , KC_COMM , _______,
+        _______, _______, _______, _______, _______, _______,                       DE_MINS, DE_7   , DE_8   , DE_9   , DE_SLSH , _______,
+        _______, _______, _______, _______, _______, _______,                       DE_PLUS, DE_4   , DE_5   , DE_6   , DE_ASTR , _______,
+        _______, _______, _______, _______, _______, _______, _______,     _______, DE_0   , DE_1   , DE_2   , DE_3   , DE_COMM , _______,
           _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______
     ),
 
     [3] = LAYOUT(
         _______, _______     , _______    , _______   ,_______     , _______  ,                      _______, _______, _______, _______, _______, _______,
-        _______, _______    , KC_UNDS    , KC_LBRC   , KC_RBRC    , KC_PIPE ,                      _______, _______, _______, _______, _______, _______,
-        _______, KC_PLUS    , KC_MINS    , KC_LPRN   , KC_RPRN    , KC_SLSH ,                      _______, _______, _______, _______, _______, _______,
-        _______, KC_ASTR    , KC_EQL     , KC_LCBR   , KC_RCBR    , KC_BSLS , _______,    _______, _______, _______, _______, _______, _______, _______,
+        _______, DE_GRV     , DE_UNDS    , DE_LBRC   , DE_RBRC    , DE_PIPE ,                      _______, _______, _______, _______, _______, _______,
+        _______, DE_PLUS    , DE_MINS    , DE_LPRN   , DE_RPRN    , DE_SLSH ,                      _______, _______, _______, _______, _______, _______,
+        _______, DE_ASTR    , DE_EQL     , DE_LCBR   , DE_RCBR    , DE_BSLS , _______,    _______, _______, _______, _______, _______, _______, _______,
              _______, _______, _______, _______, _______,                                  _______ , _______, _______, _______, _______
     ),
 
     [4] = LAYOUT(
         _______, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
-        _______, _______, KC_HASH, KC_CIRC, KC_QUES, _______,                    _______, _______, _______, _______, _______, _______,
-        _______, KC_GRV , KC_AT  , KC_PERC, KC_EXLM, _______,                    _______, _______, _______, _______, _______, _______,
-        _______, _______, KC_TILD, KC_DLR , KC_AMPR, _______, _______,     _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, DE_HASH, DE_CIRC, DE_QUES, _______,                    _______, _______, _______, _______, _______, _______,
+        _______, _______, DE_AT  , DE_PERC, DE_EXLM, _______,                    _______, _______, _______, _______, _______, _______,
+        _______, _______, DE_TILD, DE_DLR , DE_AMPR, _______, _______,     _______, _______, _______, _______, _______, _______, _______,
           _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______
     ),
 
     [5] = LAYOUT(
         _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                    KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11  ,
-        _______, _______, _______, _______, _______, _______,                    _______, MA_UE  , _______, MA_OE  , _______, KC_F12  ,
-        _______, MA_AE, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,                    _______, DE_UDIA, _______, DE_ODIA, _______, KC_F12  ,
+        _______, DE_ADIA, DE_SS  , _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______,
-          _______, _______, _______, _______, _______,                         KC_DEL, _______, _______, _______, _______
+          _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______
     )
 };
 
@@ -102,43 +97,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 
 // ############## MACROS ################
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-    case MA_UE:
-        if (record->event.pressed) {
-            if (keyboard_report->mods & MOD_BIT(KC_LSFT) || keyboard_report->mods & MOD_BIT(KC_RSFT)) {
-                SEND_STRING("\"U");
-            }
-            else {
-                SEND_STRING("\"u");
-            }
-        }
-        break;
 
-    case MA_AE:
-        if (record->event.pressed) {
-            if (keyboard_report->mods & MOD_BIT(KC_LSFT) || keyboard_report->mods & MOD_BIT(KC_RSFT)) {
-                SEND_STRING("\"A");
-            }
-            else {
-                SEND_STRING("\"a");
-            }
-        }
-        break;
-
-    case MA_OE:
-        if (record->event.pressed) {
-            if (keyboard_report->mods & MOD_BIT(KC_LSFT) || keyboard_report->mods & MOD_BIT(KC_RSFT)) {
-                SEND_STRING("\"O");
-            }
-            else {
-                SEND_STRING("\"o");
-            }
-        }
-        break;
-    }
-    return true;
-};
 
 // ########## RGB STUFF ############
 
@@ -156,13 +115,17 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                 uint8_t index = g_led_config.matrix_co[row][col];
 
                 if (index >= led_min && index < led_max && index != NO_LED &&
-                keymap_key_to_keycode(layer, (keypos_t){col,row}) > KC_TRNS) {
+                    keymap_key_to_keycode(layer, (keypos_t){col,row}) > KC_TRNS) {
                     rgb_matrix_set_color(index, RGB_TEAL);
                 }
             }
         }
     }
-    if (host_keyboard_led_state().caps_lock) {rgb_matrix_set_color(25, RGB_RED);}
+
+    if (is_caps_word_on() == true) {
+        rgb_matrix_set_color(8, RGB_RED);
+        rgb_matrix_set_color(50, RGB_RED);
+    }
     return false;
 }
 
