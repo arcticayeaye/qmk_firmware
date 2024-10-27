@@ -14,10 +14,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
-#include "keymap_us_international.h"
+#include "sendstring_german_mac_iso.h"
+#include "keycodes_german_pc.h"
 
 #define OS_MAC false
 #define OS_PC true
+
+//#define DE_TEST_2(MODE) ((MODE = OS_PC) ? (KC_P) : (KC_M))
 
 enum custom_keycodes {
     SWITCH_OS = SAFE_RANGE,
@@ -50,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC  , KC_Q , KC_W       , KC_E      , KC_R         , KC_T ,                        KC_Y   , KC_U        , KC_I       , KC_O       , KC_P    , XXXXXXX,
         KC_LSFT , KC_A , LT(2,KC_S) , LT(1,KC_D), LSFT_T(KC_F) , KC_G ,                        KC_H , LSFT_T(KC_J), LT(3,KC_K) , LT(4,KC_L)     , KC_SCLN , KC_RSFT,
         CW_TOGG , KC_Z , KC_X       , KC_C      , LT(5,KC_V)         , KC_B ,   KC_MUTE,    KC_MPLY, LT(5,KC_N)   , KC_M        , KC_COMM    , KC_DOT     , KC_QUOT , XXXXXXX,
-        SWITCH_OS , XXXXXXX  , LCTL_T(KC_BSPC) ,LALT_T(KC_ENT) , LGUI_T(KC_TAB) ,                    KC_RGUI, RALT_T(KC_SPC), RCTL_T(KC_DEL) , XXXXXXX , XXXXXXX
+        SWITCH_OS , DE_M  , LCTL_T(KC_BSPC) ,LALT_T(KC_ENT) , LGUI_T(KC_TAB) ,                    KC_RGUI, RALT_T(KC_SPC), RCTL_T(KC_DEL) , XXXXXXX , XXXXXXX
     ),
 
 	[1] = LAYOUT(
@@ -87,8 +90,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [5] = LAYOUT(
         _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                    KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11  ,
-        _______, _______, _______, _______, _______, _______,                    _______, US_UDIA, _______, US_ODIA, _______, KC_F12  ,
-        _______, US_ADIA, US_SS  , _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,                    _______, DE_UDIA, _______, DE_ODIA, _______, KC_F12  ,
+        _______, DE_ADIA, DE_SS  , _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______,
           _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______
     )
@@ -105,23 +108,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 #endif
 
-// ############## MACROS ################
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-    case SWITCH_OS:
-        if (record->event.pressed) {
-            if (os_mode == OS_PC) {
-                os_mode = OS_MAC;
-            } 
-            else {
-                os_mode = OS_PC;
-            }
-        } 
-        break;
-    }
-    return true;
-};
 
 // ########## RGB STUFF ############
 
@@ -160,4 +146,32 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
     return false;
 }
+
+
+// ############## MACROS ################
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case SWITCH_OS:
+        if (record->event.pressed) {
+            if (os_mode == OS_PC) {
+                os_mode = OS_MAC;
+            } 
+            else {
+                os_mode = OS_PC;
+            }
+        } 
+        break;
+    }
+
+    // ##### map german MAC to german PC
+    if (record->event.pressed && os_mode == OS_PC) {
+        switch (keycode)
+        case DE_M:
+            tap_code(PC_DE_P);
+            return false;
+    }
+    
+    return true;
+};
 
