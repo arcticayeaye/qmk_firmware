@@ -14,13 +14,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
-#include "sendstring_german_mac_iso.h"
+#include "keymap_german_mac_iso.h"
 #include "keycodes_german_pc.h"
 
 #define OS_MAC false
 #define OS_PC true
-
-//#define DE_TEST_2(MODE) ((MODE = OS_PC) ? (KC_P) : (KC_M))
 
 enum custom_keycodes {
     SWITCH_OS = SAFE_RANGE,
@@ -49,10 +47,10 @@ bool os_mode = OS_PC;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[0] = LAYOUT(
-        XXXXXXX , KC_1 , KC_2       , KC_3      , KC_4         , KC_5 ,                        KC_6   , KC_7        , KC_8       , KC_9       , KC_0    , XXXXXXX,
-        KC_ESC  , KC_Q , KC_W       , KC_E      , KC_R         , KC_T ,                        KC_Y   , KC_U        , KC_I       , KC_O       , KC_P    , XXXXXXX,
-        KC_LSFT , KC_A , LT(2,KC_S) , LT(1,KC_D), LSFT_T(KC_F) , KC_G ,                        KC_H , LSFT_T(KC_J), LT(3,KC_K) , LT(4,KC_L)     , KC_SCLN , KC_RSFT,
-        CW_TOGG , KC_Z , KC_X       , KC_C      , LT(5,KC_V)         , KC_B ,   KC_MUTE,    KC_MPLY, LT(5,KC_N)   , KC_M        , KC_COMM    , KC_DOT     , KC_QUOT , XXXXXXX,
+        XXXXXXX , DE_1 , DE_2       , DE_3      , DE_4         , DE_5 ,                        DE_6   , DE_7        , DE_8       , DE_9       , DE_0    , XXXXXXX,
+        KC_ESC  , DE_Q , DE_W       , DE_E      , DE_R         , DE_T ,                        DE_Y   , DE_U        , DE_I       , DE_O       , DE_P    , XXXXXXX,
+        KC_LSFT , DE_A , LT(2,DE_S) , LT(1,DE_D), LSFT_T(DE_F) , DE_G ,                        DE_H , LSFT_T(DE_J), LT(3,DE_K) , LT(4,DE_L)     , DE_SCLN , KC_RSFT,
+        CW_TOGG , DE_Z , DE_X       , DE_C      , LT(5,DE_V)         , DE_B ,   KC_MUTE,    KC_MPLY, LT(5,DE_N)   , DE_M        , DE_COMM    , DE_DOT     , DE_QUOT , XXXXXXX,
         SWITCH_OS , DE_M  , LCTL_T(KC_BSPC) ,LALT_T(KC_ENT) , LGUI_T(KC_TAB) ,                    KC_RGUI, RALT_T(KC_SPC), RCTL_T(KC_DEL) , XXXXXXX , XXXXXXX
     ),
 
@@ -66,25 +64,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[2] = LAYOUT(
         _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______ , _______,
-        _______, _______, _______, _______, _______, _______,                       KC_MINS, KC_7   , KC_8   , KC_9   , KC_SLSH , _______,
-        _______, _______, _______, _______, _______, _______,                       KC_PLUS, KC_4   , KC_5   , KC_6   , KC_ASTR , _______,
-        _______, _______, _______, _______, _______, _______, _______,     _______, KC_0   , KC_1   , KC_2   , KC_3   , KC_COMM , _______,
+        _______, _______, _______, _______, _______, _______,                       DE_MINS, DE_7   , DE_8   , DE_9   , DE_SLSH , _______,
+        _______, _______, _______, _______, _______, _______,                       DE_PLUS, DE_4   , DE_5   , DE_6   , DE_ASTR , _______,
+        _______, _______, _______, _______, _______, _______, _______,     _______, DE_0   , DE_1   , DE_2   , DE_3   , DE_COMM , _______,
           _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______
     ),
 
     [3] = LAYOUT(
         _______, _______     , _______    , _______   ,_______     , _______  ,                      _______, _______, _______, _______, _______, _______,
-        _______, KC_GRV     , KC_UNDS    , KC_LBRC   , KC_RBRC    , KC_PIPE ,                      _______, _______, _______, _______, _______, _______,
-        _______, KC_PLUS    , KC_MINS    , KC_LPRN   , KC_RPRN    , KC_SLSH ,                      _______, _______, _______, _______, _______, _______,
-        _______, KC_ASTR    , KC_EQL     , KC_LCBR   , KC_RCBR    , KC_BSLS , _______,    _______, _______, _______, _______, _______, _______, _______,
+        _______, DE_GRV     , DE_UNDS    , DE_LBRC   , DE_RBRC    , DE_PIPE ,                      _______, _______, _______, _______, _______, _______,
+        _______, DE_PLUS    , DE_MINS    , DE_LPRN   , DE_RPRN    , DE_SLSH ,                      _______, _______, _______, _______, _______, _______,
+        _______, DE_ASTR    , DE_EQL     , DE_LCBR   , DE_RCBR    , DE_BSLS , _______,    _______, _______, _______, _______, _______, _______, _______,
              _______, _______, _______, _______, _______,                                  _______ , _______, _______, _______, _______
     ),
 
     [4] = LAYOUT(
         _______, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
-        _______, _______, KC_HASH, KC_CIRC, KC_QUES, _______,                    _______, _______, _______, _______, _______, _______,
-        _______, _______, KC_AT  , KC_PERC, KC_EXLM, _______,                    _______, _______, _______, _______, _______, _______,
-        _______, _______, KC_TILD, KC_DLR , KC_AMPR, _______, _______,     _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, DE_HASH, DE_CIRC, DE_QUES, _______,                    _______, _______, _______, _______, _______, _______,
+        _______, _______, DE_AT  , DE_PERC, DE_EXLM, _______,                    _______, _______, _______, _______, _______, _______,
+        _______, _______, DE_TILD, DE_DLR , DE_AMPR, _______, _______,     _______, _______, _______, _______, _______, _______, _______,
           _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______
     ),
 
@@ -161,17 +159,45 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 os_mode = OS_PC;
             }
         } 
-        break;
+        return true;
     }
 
     // ##### map german MAC to german PC
     if (record->event.pressed && os_mode == OS_PC) {
-        switch (keycode)
-        case DE_M:
-            tap_code(PC_DE_P);
-            return false;
+        switch (keycode) {
+
+            case DE_LCBR:
+                tap_code16(PC_DE_LCBR);
+                return false;
+            case DE_LBRC:
+                tap_code16(PC_DE_LBRC);
+                return false;
+            case DE_RBRC:
+                tap_code16(PC_DE_RBRC);
+                return false;
+            case DE_RCBR:
+                tap_code16(PC_DE_RCBR);
+                return false;
+            case DE_BSLS:
+                tap_code16(PC_DE_BSLS);
+                return false;
+            case DE_AT:
+                tap_code16(PC_DE_AT);
+                return false;
+            case DE_EURO:
+                tap_code16(PC_DE_EURO);
+                return false;
+            case DE_TILD:
+                tap_code16(PC_DE_TILD);
+                return false;
+            case DE_PIPE:
+                tap_code16(PC_DE_PIPE);
+                return false;
+            case DE_MICR:
+                tap_code16(PC_DE_MICR);
+                return false;
+        }
     }
-    
     return true;
 };
 
