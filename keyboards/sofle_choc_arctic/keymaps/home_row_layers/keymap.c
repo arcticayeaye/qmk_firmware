@@ -16,6 +16,14 @@
 #include QMK_KEYBOARD_H
 #include "keymap_us_international.h"
 
+#define OS_MAC false
+#define OS_PC true
+
+enum custom_keycodes {
+    SWITCH_OS = SAFE_RANGE,
+};
+
+bool os_mode = OS_PC;
 
 /*
  * QWERTY
@@ -41,8 +49,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX , KC_1 , KC_2       , KC_3      , KC_4         , KC_5 ,                        KC_6   , KC_7        , KC_8       , KC_9       , KC_0    , XXXXXXX,
         KC_ESC  , KC_Q , KC_W       , KC_E      , KC_R         , KC_T ,                        KC_Y   , KC_U        , KC_I       , KC_O       , KC_P    , XXXXXXX,
         KC_LSFT , KC_A , LT(2,KC_S) , LT(1,KC_D), LSFT_T(KC_F) , KC_G ,                        KC_H , LSFT_T(KC_J), LT(3,KC_K) , LT(4,KC_L)     , KC_SCLN , KC_RSFT,
-        KC_CAPS , KC_Z , KC_X       , KC_C      , LT(5,KC_V)         , KC_B ,   KC_MUTE,    KC_MPLY, LT(5,KC_N)   , KC_M        , KC_COMM    , KC_DOT     , KC_QUOT , XXXXXXX,
-        XXXXXXX , XXXXXXX  , LCTL_T(KC_BSPC) ,LALT_T(KC_ENT) , LGUI_T(KC_TAB) ,                    KC_RGUI, RALT_T(KC_SPC), RCTL_T(KC_DEL) , XXXXXXX , XXXXXXX
+        CW_TOGG , KC_Z , KC_X       , KC_C      , LT(5,KC_V)         , KC_B ,   KC_MUTE,    KC_MPLY, LT(5,KC_N)   , KC_M        , KC_COMM    , KC_DOT     , KC_QUOT , XXXXXXX,
+        SWITCH_OS , XXXXXXX  , LCTL_T(KC_BSPC) ,LALT_T(KC_ENT) , LGUI_T(KC_TAB) ,                    KC_RGUI, RALT_T(KC_SPC), RCTL_T(KC_DEL) , XXXXXXX , XXXXXXX
     ),
 
 	[1] = LAYOUT(
@@ -99,7 +107,21 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 
 // ############## MACROS ################
 
-
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case SWITCH_OS:
+        if (record->event.pressed) {
+            if (os_mode == OS_PC) {
+                os_mode = OS_MAC;
+            } 
+            else {
+                os_mode = OS_PC;
+            }
+        } 
+        break;
+    }
+    return true;
+};
 
 // ########## RGB STUFF ############
 
@@ -128,6 +150,14 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         rgb_matrix_set_color(8, RGB_RED);
         rgb_matrix_set_color(50, RGB_RED);
     }
+
+    if (os_mode == OS_PC) {
+        rgb_matrix_set_color(16, RGB_WHITE);
+    }
+    else {
+        rgb_matrix_set_color(16, RGB_CORAL);
+    }
+
     return false;
 }
 
