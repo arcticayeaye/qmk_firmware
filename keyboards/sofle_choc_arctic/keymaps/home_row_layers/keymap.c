@@ -53,15 +53,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC  , DE_Q       , DE_W       , DE_E       , DE_R         , DE_T ,                        DE_Y , DE_U           , DE_I       , DE_O       , DE_P    , XXXXXXX,
         CW_TOGG , LT(6,DE_A) , LT(4,DE_S) , LSFT_T(DE_D) , LT(2,DE_F) , DE_G ,                        DE_H , LT(3,DE_J)   , LSFT_T(DE_K) , LT(5,DE_L) , LT(7,DE_PLUS) , CW_TOGG,
         XXXXXXX , DE_Z       , DE_X       , DE_C       , DE_V         , DE_B ,   KC_MUTE,    KC_MPLY, DE_N , DE_M , DE_COMM , DE_DOT     , DE_MINS    , XXXXXXX,
-        SWITCH_OS , TG(1) , LCTL_T(KC_BSPC) ,LALT_T(KC_ENT) , LGUI_T(KC_TAB) ,                    KC_RGUI, RALT_T(KC_SPC) , RCTL_T(KC_DEL) , XXXXXXX , XXXXXXX
+        SWITCH_OS , TG(1) , LALT_T(KC_BSPC) ,LCTL_T(KC_ENT) , LGUI_T(KC_TAB) ,                    KC_RGUI, RCTL_T(KC_SPC) , RALT_T(KC_DEL) , XXXXXXX , XXXXXXX
     ),
 
 	[1] = LAYOUT(
         XXXXXXX , DE_1       , DE_2       , DE_3       , DE_4         , DE_5 ,                        DE_6 , DE_7           , DE_8       , DE_9       , DE_0    , XXXXXXX,
-        KC_ESC  , DE_Q       , DE_W       , DE_F       , DE_P         , DE_G ,                        DE_J , DE_L           , DE_U       , DE_Y       , DE_PLUS    , XXXXXXX,
-        CW_TOGG , LT(6,DE_A) , LT(4,DE_R) , LSFT_T(DE_S) , LT(2,DE_T) , DE_D ,                        DE_H , LT(3,DE_N)   , LSFT_T(DE_E) , LT(5,DE_I) , LT(7,DE_O) , CW_TOGG,
-        XXXXXXX , DE_Z       , DE_X       , DE_C       , DE_V         , DE_B ,   KC_MUTE,    KC_MPLY, DE_K , DE_M , DE_COMM , DE_DOT     , DE_MINS    , XXXXXXX,
-        SWITCH_OS , _______, LCTL_T(KC_BSPC) ,LALT_T(KC_ENT) , LGUI_T(KC_TAB) ,                    KC_RGUI, RALT_T(KC_SPC) , RCTL_T(KC_DEL) , XXXXXXX , XXXXXXX
+        KC_ESC  , DE_Q       , DE_W       , DE_F       , DE_P         , DE_B ,                        DE_J , DE_L           , DE_U       , DE_Y       , DE_PLUS    , XXXXXXX,
+        CW_TOGG , LT(6,DE_A) , LT(4,DE_R) , LSFT_T(DE_S) , LT(2,DE_T) , DE_G ,                        DE_M , LT(3,DE_N)   , LSFT_T(DE_E) , LT(5,DE_I) , LT(7,DE_O) , CW_TOGG,
+        XXXXXXX , DE_Z       , DE_X       , DE_C       , DE_D         , DE_V ,   KC_MUTE,    KC_MPLY, DE_K , DE_H , DE_COMM , DE_DOT     , DE_MINS    , XXXXXXX,
+        SWITCH_OS , _______, LALT_T(KC_BSPC) ,LCTL_T(KC_ENT) , LGUI_T(KC_TAB) ,                    KC_RGUI, RCTL_T(KC_SPC) , RALT_T(KC_DEL) , XXXXXXX , XXXXXXX
     ),
     
     [2] = LAYOUT(
